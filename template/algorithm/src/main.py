@@ -14,15 +14,12 @@ sys.path.append("/algorithm/src")
 # ======
 
 import logging
-from dataclasses import asdict
 from pathlib import Path
 
+from implementation.algorithm import Algorithm
+from implementation.data import InputParameters
 from oceanprotocol_job_details.config import config
 from oceanprotocol_job_details.job_details import OceanProtocolJobDetails
-from oceanprotocol_job_details.ocean import JobDetails
-from orjson import dumps
-
-from implementation.algorithm import Algorithm
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -31,13 +28,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def main():
+def main() -> None:
     # Load the current job details from the environment variables
-    job_details: JobDetails = OceanProtocolJobDetails().load()
+    job_details = OceanProtocolJobDetails(InputParameters).load()
 
     logger.info("Starting compute job with the following input information:")
-    logger.info(dumps({k: str(v) for k, v in asdict(job_details).items()}))
-
     algorithm = Algorithm(job_details)
 
     try:

@@ -1,9 +1,1 @@
-if [ -z "${TEST}" ]; then
-  if [ -z "${DEV}" ]; then
-    python3
-  else
-    python3 -u src/main.py
-  fi
-else
-  pytest -v
-fi
+[[ -z "${TEST}" ]] && { [[ -z "${DEV}" ]] && python3 || python3 -u src/main.py; } || pytest -v

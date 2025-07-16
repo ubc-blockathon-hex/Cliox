@@ -1,3 +1,0 @@
-# TODO: add your requirements here
-# numpy==2.2.4
-# pandas==2.2.3

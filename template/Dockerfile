@@ -1,9 +1,11 @@
-# FROM python:3.10-alpine
-FROM python:3.12-slim
+FROM python:3.11-alpine
+
+# Install scikit-learn specific dependencies
+RUN apk add libgomp libstdc++ build-base
 
 WORKDIR /algorithm
 
-
+# Copy the algorithm code (with the same depth)
 COPY algorithm/src /algorithm/src
 COPY algorithm/tests /algorithm/tests
 COPY algorithm/requirements.txt /algorithm/requirements.txt

@@ -4,12 +4,13 @@ Welcome! This repository is structured to help you get started quickly with your
 
 ## Folder Overview
 
-- **sample_count_lines/**  
+- **sample_timeseries_forecast**  
   This folder contains a **sample project**. It’s provided to give you a basic idea of what your own implementation should look like. You can refer to its structure, code, and setup as an example.
 
-- **template/**  
+- **template**  
   This is the **template** you should use to create your own solution. It contains all the necessary files and a clear structure, with `TODO` comments to guide your implementation.
 
+Sample adapted from [AgrospAI/ocean-algo – timeseries-forecast](https://github.com/AgrospAI/ocean-algo/tree/main/timeseries-forecast)
 
 ## How to Use the Template
 
@@ -22,19 +23,34 @@ Welcome! This repository is structured to help you get started quickly with your
 3. **Do not change other files** in the template folder unless specifically instructed.
 
 
+
 ## Tutorial: Building and Running with Docker Compose
 
 Here’s a step-by-step guide to set up your environment, install dependencies, and run your code using Docker Compose.
 
+### 0. Add sample inplace 
+* add you e sample data to file `template/_data/inputs/eb60f87363a36a5ae5cb8373524a8fd976b0cc5f8c40a706c615b857ae0e2974/0`
+
 ### 1. Add Your Dependencies
 
-- Open `template/algorithm/requirements.txt`.
-- Add any Python packages with version your algorithm needs, one per line.  
-  _Example:_
-  ```
-  numpy==2.2.4
-  pandas==2.2.3
-  ```
+
+* Optional 1: 
+  - Open `template/algorithm/requirements.txt`.
+  - Add any Python packages with version your algorithm needs, one per line.  
+    _Example:_
+    ```
+    numpy==2.2.4
+    pandas==2.2.3
+    ```
+
+* Optional 2:
+  - Navigate to `template/algortihm`
+  - Use comment below to import libraries 
+    ``` sh
+    uv pip compile pyproject.toml -o requirements.txt 
+    ``` 
+
+
 
 ### 2. Build the Docker Image
 
@@ -62,7 +78,10 @@ This will:
 - Start the container
 - Execute the main script, which will call your implementation in `algorithm.py`
 
-### 4. (Optional) Stopping the Container
+### 4. Check whether result matches your expectation
+- Navigate to `template\_data\outputs` to check the algo output
+
+### 5. (Optional) Stopping the Container
 
 To stop the running container, press `Ctrl+C` in the terminal, then run:
 
