@@ -44,8 +44,9 @@ Here’s a step-by-step guide to set up your environment, install dependencies, 
     ```
 
 * Optional 2:
-  - Navigate to `template/algortihm`
-  - Use comment below to import libraries 
+  - Navigate to `template/algorithm`
+  - update dependencies in the file `pyproject.toml`
+  - Use comment below to generate `requirements.txt` file for libraries 
     ``` sh
     uv pip compile pyproject.toml -o requirements.txt 
     ``` 
