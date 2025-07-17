@@ -1,1 +1,0 @@
-{"model":{"name":"AdaBoostRegressor","parameters":{"n_estimators":500,"learning_rate":0.05,"loss":"linear"},"metrics":["neg_mean_squared_error"]},"dataset":{"separator":",","target_column":"Sales","datetime_column":"Date","split":0.7,"lags":3,"periodicity":["day","week","month","year"]}}
