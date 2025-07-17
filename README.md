@@ -28,8 +28,8 @@ Sample adapted from [AgrospAI/ocean-algo – timeseries-forecast](https://github
 
 Here’s a step-by-step guide to set up your environment, install dependencies, and run your code using Docker Compose.
 
-### 0. Add sample inplace 
-* add you e sample data to file `template/_data/inputs/eb60f87363a36a5ae5cb8373524a8fd976b0cc5f8c40a706c615b857ae0e2974/0`
+### 0. Add sample Data inplace 
+* add your sample data to file `template/_data/inputs/eb60f87363a36a5ae5cb8373524a8fd976b0cc5f8c40a706c615b857ae0e2974/0`
 
 ### 1. Add Your Dependencies
 
