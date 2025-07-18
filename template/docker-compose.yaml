@@ -1,7 +1,17 @@
-# Use this docker-compose to test the algorithm locally
+version: "3.8"
+
 services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+
   algorithm:
     build: .
+    depends_on:
+      - ollama
     volumes:
       - ./_data/inputs:/data/inputs:ro
       - ./_data/ddos:/data/ddos:ro
@@ -11,8 +21,12 @@ services:
       - ./algorithm/tests:/algorithm/tests/
       - ./entrypoint.sh:/algorithm/entrypoint.sh
     environment:
-      DEV: 1
-      # TEST: 1
+      DEV: "1"
+      # TEST: "1"
       DIDS: '["sample_input"]'
       secret: "1234"
       TRANSFORMATION_DID: "1234"
+      BASE_URL: "http://ollama:11434"
+
+volumes:
+  ollama-data: {}
