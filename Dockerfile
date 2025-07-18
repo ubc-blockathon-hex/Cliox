@@ -25,7 +25,7 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 11434
 
 # Check if running dev & tests
-# CMD ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["/bin/sh", "/algorithm/entrypoint.sh"]
 
 # Bottom due to cache
-ENV VERSION_TAG="0.0.0"
+ENV VERSION_TAG="0.0.1"
