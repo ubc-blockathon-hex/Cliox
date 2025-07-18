@@ -19,6 +19,7 @@ logger = getLogger(__name__)
 class Algorithm:
     def __init__(self, job_details: JobDetails):
         logger.info("Initializing Algorithm")
+        logger.info(f"Version tag: {os.getenv('VERSION_TAG', 'unknown')}")
         self._job_details = job_details
         self.results: Optional[Any] = None
 
@@ -130,7 +131,7 @@ class Algorithm:
         # Retrieve embedding parameters and base_url from environment or parameters
         params = getattr(self._job_details, "parameters", {}) or {}
         embed_model = params.get("embed_model", "nomic-embed-text")
-        base_url = params.get("base_url") or os.getenv("BASE_URL", "http://ollama:11434")
+        base_url = params.get("base_url") or os.getenv("BASE_URL", "http://localhost:11434")
         logger.info(f"Embedding parameters: model={embed_model}, base_url={base_url}")
 
         self._ensure_model_available(embed_model, base_url)
