@@ -4,6 +4,7 @@ FROM ollama/ollama:latest
 RUN apt-get update && apt-get install -y \
     python3 python3-pip \
     libgomp1 libstdc++6 build-essential \
+    curl \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /algorithm
