@@ -1,5 +1,5 @@
 import os, sys
-import json
+import json, csv
 from logging import getLogger
 from pathlib import Path
 from typing import Any, Optional, TypeVar
@@ -87,13 +87,13 @@ class Algorithm:
         if not ext:
             # try JSON
             try:
-                with open(p) as f:
+                with open(file_path) as f:
                     data = json.load(f)
                 ext = '.json'
             except json.JSONDecodeError:
                 # fallback to CSV?
                 try:
-                    with open(p) as f:
+                    with open(file_path) as f:
                         _ = list(csv.reader(f))
                     ext = '.csv'
                 except Exception:
