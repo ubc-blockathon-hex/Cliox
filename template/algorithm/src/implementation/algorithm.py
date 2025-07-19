@@ -83,6 +83,23 @@ class Algorithm:
         if not file_path.exists():
             file_path = Path.cwd() / file_path
         ext = file_path.suffix.lower()
+
+        if not ext:
+            # try JSON
+            try:
+                with open(p) as f:
+                    data = json.load(f)
+                ext = '.json'
+            except json.JSONDecodeError:
+                # fallback to CSV?
+                try:
+                    with open(p) as f:
+                        _ = list(csv.reader(f))
+                    ext = '.csv'
+                except Exception:
+                    raise ValueError(
+                        "Could not auto-detect file type; please supply a .json or .csv file."
+                    )
         if ext == ".json":
             with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
