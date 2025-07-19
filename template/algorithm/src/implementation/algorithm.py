@@ -1,9 +1,8 @@
-import os
+import os, sys
 import json
 from logging import getLogger
 from pathlib import Path
 from typing import Any, Optional, TypeVar
-
 import pandas as pd
 import requests
 from oceanprotocol_job_details.ocean import JobDetails
@@ -138,3 +137,5 @@ class Algorithm:
         with open(result_path, "w", encoding="utf-8") as f:
             json.dump(self.results, f, indent=2, ensure_ascii=False)
         logger.info("Result saved successfully")
+        logger.info("Triggering self-destruct; stopping container…")
+        sys.exit(0)
