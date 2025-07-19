@@ -141,10 +141,7 @@ class Algorithm:
         embeddings_client = OllamaEmbeddings(model=embed_model, base_url=base_url)
         vectors = embeddings_client.embed_documents(texts)
 
-        self.results = {
-            "texts": texts,
-            "embeddings": vectors
-        }
+        self.results = vectors
         logger.info("Algorithm run completed")
         return self
 
