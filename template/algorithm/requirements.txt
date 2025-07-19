@@ -3,3 +3,5 @@ faiss-cpu
 ollama
 oceanprotocol-job-details
 pytest
+pandas
+langchain-ollama
