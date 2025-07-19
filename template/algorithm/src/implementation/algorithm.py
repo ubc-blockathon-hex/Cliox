@@ -18,6 +18,7 @@ class Algorithm:
         logger.info("Initializing Algorithm")
         logger.info(f"Version tag: {os.getenv('VERSION_TAG', 'unknown')}")
         self._job_details = job_details
+        logger.info(f"Job details: {self._job_details}")
         self.results: Optional[Any] = None
 
     def _validate_input(self) -> None:
@@ -79,9 +80,9 @@ class Algorithm:
 
         input_files = self._job_details.files.files[0].input_files
         file_path = Path(input_files[0])
+        logger.info(f"Input file path: {file_path}")
         if not file_path.exists():
             file_path = Path.cwd() / file_path
-
         ext = file_path.suffix.lower()
         if ext == ".json":
             with open(file_path, "r", encoding="utf-8") as f:
